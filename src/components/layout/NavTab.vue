@@ -1,5 +1,7 @@
 <template>
-    <router-view/>
+    <div>
+        nav
+    </div>
 </template>
 <script>
     export default {}
