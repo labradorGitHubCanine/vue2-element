@@ -1,9 +1,9 @@
 <template>
-    <el-aside>
-        <el-menu :collapse="collapse">
+    <el-aside class="hidden-sm-and-down">
+        <el-menu :collapse="collapse" unique-opened :default-active="$route.name" @select="select">
             <sub-menu v-for="(i, j) in menus" :key="j" :index="j" :menu="i"></sub-menu>
         </el-menu>
-        <el-button @click="collapse=!collapse">缩放</el-button>
+        <el-button type="text" @click="collapse=!collapse">缩放</el-button>
     </el-aside>
 </template>
 <script>
@@ -17,16 +17,25 @@
                 menus: menus,
                 collapse: false
             }
+        },
+        methods: {
+            select(index, indexPath) {
+                console.log(indexPath);
+                this.$router.push({name: index});
+            }
+        },
+        created() {
+            this.$router.add(this.menus);
+            localStorage.setItem('__menus', JSON.stringify(this.menus));
         }
     }
 </script>
 <style scoped>
-    >>> .el-menu:not(.el-menu--collapse) {
+    .el-menu:not(.el-menu--collapse) {
         width: 192px !important;
     }
 
     aside {
         width: auto !important;
-        overflow-x: hidden !important;
     }
 </style>

@@ -1,32 +1,65 @@
 [
   {
-    "title": "首页",
+    "title": "概述",
     "dot": 3,
-    "icon": "el-icon-house"
+    "icon": "el-icon-house",
+    "page": "Home"
   },
   {
-    "title": "菜单-1",
+    "title": "状态管理",
+    "icon": "el-icon-house",
+    "page": "Store"
+  },
+  {
+    "title": "多级菜单",
     "icon": "el-icon-house",
     "children": [
       {
-        "title": "菜单-1-1",
-        "icon": "el-icon-house"
+        "title": "菜单配置"
       },
       {
-        "title": "菜单-1-2"
-      },
-      {
-        "title": "菜单-1-3",
+        "title": "2级",
         "children": [
           {
-            "title": "菜单-1-3-1",
-            "icon": "el-icon-house"
-          },
-          {
-            "title": "菜单-1-3-2"
+            "title": "3级",
+            "children": [
+              {
+                "title": "4级",
+                "children": [
+                  {
+                    "title": "5级"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
     ]
+  },
+  {
+    "title": "接口请求",
+    "icon": "el-icon-house",
+    "page": "Axios"
+  },
+  {
+    "title": "图表",
+    "icon": "el-icon-house",
+    "page": "Axios"
+  },
+  {
+    "title": "编辑器",
+    "icon": "el-icon-house",
+    "page": "Axios"
+  },
+  {
+    "title": "页面引导",
+    "icon": "el-icon-house",
+    "page": "Axios"
+  },
+  {
+    "title": "聊天室",
+    "icon": "el-icon-house",
+    "page": "Axios"
   }
 ]
