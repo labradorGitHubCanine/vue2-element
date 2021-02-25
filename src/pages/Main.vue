@@ -3,8 +3,8 @@
         <aside-menu/>
         <el-container class="is-vertical">
             <header-bar/>
-            <nav-tab/>
-            <el-main>
+            <el-main style="padding-top: 0">
+                <nav-tab/>
                 <router-view/>
             </el-main>
             <footer-bar/>

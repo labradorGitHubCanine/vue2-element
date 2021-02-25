@@ -1,23 +1,30 @@
 <template>
     <el-tabs>
-        <el-tab-pane label="用户管理" name="first">
-            用户管理
+        <el-tab-pane v-for="i in tabs" :key="i.name" :name="i.name">
+            <template v-slot:label>
+                <div @contextmenu.prevent="contextmenu">
+                    {{i.meta.title}}
+                </div>
+            </template>
         </el-tab-pane>
-        <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-        <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-        <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
     </el-tabs>
 </template>
 <script>
     export default {
+        data() {
+            return {
+                tabs: []
+            }
+        },
         methods: {
             contextmenu(e) {
-                console.log(e);
+                console.log(e.x, e.y);
             }
         },
         watch: {
             $route(to) {
-                console.log()
+                if (!this.tabs.find(e => e.name === to.name))
+                    this.tabs.push(to);
             }
         }
     }
