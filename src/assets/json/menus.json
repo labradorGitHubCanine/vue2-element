@@ -11,11 +11,17 @@
     "page": "Store"
   },
   {
+    "title": "本地存储",
+    "icon": "el-icon-house",
+    "page": "Storage"
+  },
+  {
     "title": "多级菜单",
     "icon": "el-icon-house",
     "children": [
       {
-        "title": "菜单配置"
+        "title": "菜单配置",
+        "page": "Menu"
       },
       {
         "title": "2级",
@@ -45,21 +51,21 @@
   {
     "title": "图表",
     "icon": "el-icon-house",
-    "page": "Axios"
+    "page": "Chart"
   },
   {
     "title": "编辑器",
     "icon": "el-icon-house",
-    "page": "Axios"
+    "page": "Editor"
   },
   {
     "title": "页面引导",
     "icon": "el-icon-house",
-    "page": "Axios"
+    "page": "Intro"
   },
   {
     "title": "聊天室",
     "icon": "el-icon-house",
-    "page": "Axios"
+    "page": "Chat"
   }
 ]

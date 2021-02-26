@@ -1,6 +1,15 @@
+* {
+    font-family: "Microsoft YaHei", serif;
+}
+
 html, body {
     margin: 0;
     padding: 0;
     width: 100% !important;
     height: 100% !important;
+}
+
+code {
+    font-size: 12px;
+    color: #666;
 }

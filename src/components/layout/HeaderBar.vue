@@ -1,6 +1,6 @@
 <template>
     <el-header>
-        <div>123</div>
+        <div>1</div>
         <div>
             <el-button circle type="info" icon="el-icon-message"></el-button>
             <el-button circle type="success" icon="el-icon-setting"></el-button>
@@ -18,6 +18,7 @@
     </el-header>
 </template>
 <script>
+
     export default {
         methods: {
             command(e) {
@@ -29,7 +30,7 @@
                         break;
                 }
             }
-        }
+        },
     }
 </script>
 <style scoped>

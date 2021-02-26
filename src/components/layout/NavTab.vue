@@ -1,5 +1,5 @@
 <template>
-    <el-tabs>
+    <el-tabs :value="$route.name">
         <el-tab-pane v-for="i in tabs" :key="i.name" :name="i.name">
             <template v-slot:label>
                 <div @contextmenu.prevent="contextmenu">
@@ -13,17 +13,21 @@
     export default {
         data() {
             return {
-                tabs: []
+                tabs: [],
+                x: 0,
+                y: 0
             }
         },
         methods: {
             contextmenu(e) {
-                console.log(e.x, e.y);
+                this.x = e.x + 'px';
+                this.y = e.y + 'px';
+                console.log(e.x + 'px', e.y + 'px');
             }
         },
         watch: {
             $route(to) {
-                if (!this.tabs.find(e => e.name === to.name))
+                if (this.tabs.every(e => e.name !== to.name))
                     this.tabs.push(to);
             }
         }
