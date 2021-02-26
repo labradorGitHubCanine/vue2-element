@@ -9,6 +9,7 @@
 <script>
     import menus from '@/assets/json/menus.json'
     import SubMenu from "@/components/layout/SubMenu";
+    import StorageUtil from "@/plugins/util/storage-util";
 
     export default {
         components: {SubMenu},
@@ -26,7 +27,7 @@
         },
         created() {
             this.$router.add(this.menus);
-            localStorage.setItem('__menus', JSON.stringify(this.menus));
+            StorageUtil.setItem('__menus', JSON.stringify(this.menus));
         }
     }
 </script>

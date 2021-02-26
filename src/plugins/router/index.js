@@ -1,5 +1,7 @@
 const Vue = window.Vue
 const VueRouter = window.VueRouter
+import JsonUtil from "@/plugins/util/json-util"
+import StorageUtil from "@/plugins/util/storage-util"
 
 Vue.use(VueRouter)
 
@@ -34,12 +36,7 @@ router.add = menus => {
 }
 
 // 刷新页面时，重新添加动态路由
-let menus = localStorage.getItem('__menus');
-if (menus)
-    router.add(JSON.parse(menus));
-// router.replace(window.location.pathname + window.location.search).catch(e => {
-//     console.log(e)
-// });
+router.add(JsonUtil.parseArray(StorageUtil.getItem('__menus')));
 
 // 路由监听
 router.beforeEach((to, from, next) => {
