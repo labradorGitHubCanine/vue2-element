@@ -6,6 +6,12 @@
     "page": "Home"
   },
   {
+    "title": "性能优化",
+    "dot": 3,
+    "icon": "el-icon-house",
+    "page": "Home"
+  },
+  {
     "title": "状态管理",
     "icon": "el-icon-house",
     "page": "Store"
@@ -64,7 +70,22 @@
     "page": "Intro"
   },
   {
+    "title": "滚动条",
+    "icon": "el-icon-house",
+    "page": "Scroll"
+  },
+  {
     "title": "聊天室",
+    "icon": "el-icon-house",
+    "page": "Chat"
+  },
+  {
+    "title": "Lottie",
+    "icon": "el-icon-house",
+    "page": "Chat"
+  },
+  {
+    "title": "拖拽",
     "icon": "el-icon-house",
     "page": "Chat"
   }

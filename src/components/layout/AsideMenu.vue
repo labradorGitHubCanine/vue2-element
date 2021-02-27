@@ -1,10 +1,12 @@
 <template>
-    <el-aside class="hidden-sm-and-down">
-        <el-menu :collapse="collapse" unique-opened :default-active="$route.name" @select="select">
-            <sub-menu v-for="(i, j) in menus" :key="j" :index="j" :menu="i"></sub-menu>
-        </el-menu>
-        <el-button type="text" @click="collapse=!collapse">缩放</el-button>
-    </el-aside>
+    <el-scrollbar>
+        <el-aside class="hidden-sm-and-down">
+            <el-menu :collapse="collapse" unique-opened :default-active="$route.name" @select="select">
+                <sub-menu v-for="(i, j) in menus" :key="j" :index="j" :menu="i"></sub-menu>
+            </el-menu>
+            <el-button type="text" @click="collapse=!collapse">缩放</el-button>
+        </el-aside>
+    </el-scrollbar>
 </template>
 <script>
     import menus from '@/assets/json/menus.json'

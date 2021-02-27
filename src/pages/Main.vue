@@ -6,8 +6,8 @@
             <el-main style="padding-top: 0">
                 <nav-tab/>
                 <router-view/>
+                <footer-bar/>
             </el-main>
-            <footer-bar/>
         </el-container>
     </el-container>
 </template>

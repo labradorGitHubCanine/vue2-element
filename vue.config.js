@@ -6,6 +6,7 @@ module.exports = {
             'vue-router': 'VueRouter',
             'axios': 'axios',
             'element-ui': 'ElementUI',
+            'lottie': 'lottie'
         }
     }
 }
