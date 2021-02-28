@@ -39,9 +39,10 @@
         justify-content: space-between;
         align-items: center;
         height: 48px !important;
+        border-bottom: 1px solid #ccc;
     }
 
-    header > div > * {
+    header div > * {
         margin: 0 4px 0 4px !important;
     }
 </style>
