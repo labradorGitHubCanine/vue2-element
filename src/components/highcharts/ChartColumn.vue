@@ -1,0 +1,66 @@
+<template>
+    <!-- 饼状图 -->
+    <chart :options="options"></chart>
+</template>
+<script>
+    import {Chart} from 'highcharts-vue'
+
+    import Highcharts from 'highcharts'
+
+    require('highcharts/modules/exporting')(Highcharts); // 启用导出模块
+    require('highcharts/modules/data')(Highcharts); // 启用data模块
+
+    Highcharts.setOptions({
+        lang: {
+            contextButtonTitle: '操作',
+            downloadJPEG: '导出为JPEG',
+            downloadPDF: '导出为PDF',
+            downloadPNG: '导出为PNG',
+            downloadSVG: '导出为SVG',
+            printChart: '打印'
+        }
+    });
+
+    export default {
+        props: {
+            title: {type: String}, // 标题
+            subtitle: {type: String}, // 副标题
+            data: {type: Array}, // 数据，格式为：[ [null, 分类...], [名称, 1, 2, 3, ...] ]，只需要2个元素
+            unit: {type: String}, // 计量单位
+            titleX: {type: String}, // x轴标题
+            titleY: {type: String}, // y轴标题
+        },
+        components: {Chart},
+        data() {
+            return {
+                options: {
+                    chart: {type: 'column'},
+                    title: {text: this.title, style: {fontWeight: 'bold'}},
+                    subtitle: {text: this.subtitle},
+                    xAxis: {
+                        title: {text: this.titleX, align: 'low'},
+                        categories: this.x,
+                        gridLineWidth: 1,
+                    },
+                    yAxis: {title: {text: this.titleY, align: 'low'}},
+                    tooltip: {
+                        borderWidth: 0,
+                        valueSuffix: this.unit,
+                        animation: false,
+                        crosshairs: true,
+                        headerFormat: '<b>{point.key}</b><br/>',
+                        useHTML: true
+                    },
+                    legend: {
+                        enabled: this.data.length > 2,
+                        borderWidth: 1,
+                    },
+                    data: {columns: this.data},
+                    exporting: {enabled: true},
+                    credits: {enabled: false},
+                    plotOptions: {series: {animation: false}},
+                }
+            }
+        },
+    }
+</script>

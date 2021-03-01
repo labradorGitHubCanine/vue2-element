@@ -11,7 +11,7 @@
                     />
                 </el-col>
                 <el-col :md="12" :sm="24">
-                    <h2 style="text-align: center">Element</h2>
+                    <h2 style="text-align: center">Vue2-Element</h2>
                     <el-form size="large">
                         <el-form-item>
                             <el-input></el-input>
