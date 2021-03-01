@@ -48,6 +48,7 @@
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+        z-index: 1;
     }
 
     header div > * {
