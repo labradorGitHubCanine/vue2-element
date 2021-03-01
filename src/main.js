@@ -11,9 +11,6 @@ Vue.use(window.ELEMENT, {
     size: 'small'
 })
 
-
-
-
 new Vue({
     router,
     render: h => h(App),
