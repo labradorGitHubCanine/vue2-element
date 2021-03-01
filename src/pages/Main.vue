@@ -5,7 +5,7 @@
             <header-bar/>
             <el-scrollbar>
                 <el-main>
-                    <router-view/>
+                    <router-view style="min-height: 36rem"/>
                     <footer-bar/>
                 </el-main>
             </el-scrollbar>
