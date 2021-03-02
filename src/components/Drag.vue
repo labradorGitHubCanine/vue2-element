@@ -1,22 +1,28 @@
 <template>
-    <div>
-        <svg ref="svg" :style="{height: svgHeight, width: svgWidth, border: '1px solid'}">
-            <rect v-for="(i, j) in data" :key="j"
-                  :class="{active: i.active}"
-                  :x="x(i)"
-                  :y="y(i)"
-                  :height="rectHeight(i)"
-                  :width="rectWidth(i)"
-                  style="fill: #02b875"
-                  @mousedown="mousedown($event, i)"
-                  @mousemove="mousemove($event, i)"
-                  @mouseup="$set(i, 'active', false)"
-                  @mouseleave="$set(i, 'active', false)"
-            ></rect>
-        </svg>
-        {{data[0].active}}
-    </div>
-
+    <el-row>
+        <el-col :span="2">
+            <el-slider v-model="zoomValue"
+                       :format-tooltip="e => e + '%'"
+                       vertical
+                       height="200px">
+            </el-slider>
+        </el-col>
+        <el-col :span="22">
+            <svg ref="svg" :style="{height: svgHeight, width: svgWidth, border: '1px solid'}">
+                <rect v-for="(i, j) in data" :key="j"
+                      :class="{active: i.active}"
+                      :x="x(i)"
+                      :y="y(i)"
+                      :height="rectHeight(i)"
+                      :width="rectWidth(i)"
+                      @mousedown="mousedown($event, i)"
+                      @mousemove="mousemove($event, i)"
+                      @mouseup="$set(i, 'active', false)"
+                      @mouseleave="$set(i, 'active', false)"
+                ></rect>
+            </svg>
+        </el-col>
+    </el-row>
 </template>
 <script>
     export default {
@@ -25,10 +31,10 @@
             data: {type: Array}, // 数组，包含了每个元素的坐标，类型等信息
             height: {type: Number, default: 100}, // svg的高度
             width: {type: Number, default: 100}, // svg的宽度
-            zoom: {type: Number, default: 1} // 缩放，长宽会按比例放大缩小，默认1
         },
         data() {
             return {
+                zoomValue: 30,
                 mouseStart: {x: 0, y: 0}, // 用于记录开始拖拽时鼠标的起始位置
                 rectStart: {}, // 用于记录开始拖拽时rect的起始位置
             }
@@ -67,6 +73,9 @@
             }
         },
         computed: {
+            zoom() {
+                return this.zoomValue / 100;
+            },
             svgHeight() { // svg整体高度
                 return this.height * this.zoom;
             },
@@ -82,7 +91,10 @@
         cursor: move;
     }
 
-    rect.active {
-        stroke-width: 1;
+    rect {
+        fill: white;
+        stroke: black;
+        stroke-width: 0.5;
     }
+
 </style>

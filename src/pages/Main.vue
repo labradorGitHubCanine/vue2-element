@@ -4,7 +4,7 @@
         <el-container class="is-vertical">
             <header-bar/>
             <el-scrollbar>
-                <el-main>
+                <el-main id="main-container">
                     <router-view style="min-height: 36rem"/>
                     <footer-bar/>
                 </el-main>

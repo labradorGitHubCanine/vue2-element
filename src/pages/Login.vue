@@ -1,6 +1,6 @@
 <template>
     <div style="display: flex; align-items: center; justify-content: center">
-        <el-card style="width: 50rem">
+        <el-card style="width: 45rem">
             <el-row>
                 <el-col :span="12" class="hidden-sm-and-down">
                     <lottie ref="lottie_web"

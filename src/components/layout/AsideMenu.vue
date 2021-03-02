@@ -1,5 +1,5 @@
 <template>
-    <el-aside class="hidden-sm-and-down">
+    <el-aside class="hidden-sm-and-down" id="aside-menu">
         <el-header></el-header>
         <el-scrollbar>
             <el-menu :collapse="collapse" unique-opened :default-active="$route.name" @select="select">
@@ -53,6 +53,12 @@
     .el-menu {
         border: none;
         overflow-x: hidden;
+    }
+
+    >>> .el-menu-item,
+    >>> .el-submenu__title { /* 菜单的字有点往下歪，修正一下 */
+        display: flex;
+        align-items: center;
     }
 
     aside {

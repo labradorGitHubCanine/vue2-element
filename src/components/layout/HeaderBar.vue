@@ -1,5 +1,5 @@
 <template>
-    <el-header>
+    <el-header id="header-bar">
         <div>
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
