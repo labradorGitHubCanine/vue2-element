@@ -1,7 +1,8 @@
 <template>
     <div>
-        <slot-test>
-            123
+        <slot-test :list="list">
+            <div prop="name"></div>
+            <div prop="txt"></div>
         </slot-test>
     </div>
 </template>
@@ -9,6 +10,14 @@
     import SlotTest from "@/components/SlotTest";
 
     export default {
-        components: {SlotTest}
+        components: {SlotTest},
+        data: () => ({
+            list: [
+                {name: 'aaa', txt: '123'},
+                {name: 'bbb', txt: '321'},
+                {name: 'ccc', txt: '222'},
+                {name: 'ddd', txt: '333'},
+            ]
+        })
     }
 </script>
