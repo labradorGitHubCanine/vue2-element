@@ -88,10 +88,5 @@
     "title": "拖拽",
     "icon": "el-icon-house",
     "page": "Drag"
-  },
-  {
-    "title": "插槽",
-    "icon": "el-icon-house",
-    "page": "Slot"
   }
 ]

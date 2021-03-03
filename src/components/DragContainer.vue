@@ -13,7 +13,7 @@
             </el-slider>
             <el-dropdown show-timeout="0" @command="e => $emit('add', e)">
                 <el-button type="text">
-                    下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+                    添加<i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <template v-slot:dropdown>
                     <el-dropdown-menu>
@@ -21,12 +21,26 @@
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
+            <el-button type="text" v-if="selectedRect">删除<i class="el-icon-close el-icon--right"></i></el-button>
         </el-col>
         <el-col :span="20">
-            <svg :style="{width: width, height: height}">
-                <slot :height="height" :width="width" :rects="rects"/>
-                <slot name="header" :a="1"></slot>
+            <svg :style="{width: svgWidth, height: svgHeight}">
+
+                <!-- 画矩形 -->
+                <rect v-for="(i, j) in rects" :key="j"
+                      :style="{strokeDasharray: i.selected ? 3 : 0}"
+                      v-bind="rectPosition(i)"
+                      @mousedown="mousedown($event, i)"
+                      @mouseup="mouseup($event, i)"
+                      @mouseleave="mouseleave($event, i)"
+                      @mousemove="mousemove($event, i)"
+                ></rect>
+
+                <!-- 画尺寸调整球 -->
+                <circle v-for="(i, j) in circles" :key="j" v-bind="i" r="5" stroke="black" stroke-width="1" fill="white"/>
+
             </svg>
+            <slot :rect="rects.find(e=>e.selected)"></slot>
         </el-col>
     </el-row>
 </template>
@@ -40,29 +54,77 @@
             return {
                 zoomValue: 30, // 缩放30%
                 widthValue: 1080,
-                heightValue: 1920
+                heightValue: 1920,
+                mouseStart: {}, // 记录鼠标起点位置
+                rectStart: {}
             }
         },
         methods: {
-            add(e) {
-                console.log(e);
+            rectPosition({top = 0, right = 0.2, bottom = 0.8, left = 0}) {
+                return {
+                    x: this.svgWidth * left,
+                    y: this.svgHeight * top,
+                    width: this.svgWidth * (1 - left - right),
+                    height: this.svgHeight * (1 - +top - bottom),
+                }
+            },
+            clearMouse() {
+
+            },
+            mousedown(e, i) {
+                this.rects.forEach(e => this.$set(e, 'selected', false));
+                this.$set(i, 'movable', true);
+                this.$set(i, 'selected', true);
+                this.mouseStart = {x: e.x, y: e.y};
+                this.rectStart = {...i};
+            },
+            mouseup(e, i) {
+                i.movable = false;
+            },
+            mouseleave(e, i) {
+                i.movable = false;
+            },
+            mousemove(e, i) {
+                if (i.movable) {
+                    let distance = {x: e.x - this.mouseStart.x, y: e.y - this.mouseStart.y};
+                    i.left = this.rectStart.left + distance.x / this.svgWidth;
+                    i.right = this.rectStart.right - distance.x / this.svgWidth;
+                    i.top = this.rectStart.top + distance.y / this.svgHeight;
+                    i.bottom = this.rectStart.bottom - distance.y / this.svgHeight;
+                }
             }
         },
         computed: {
             zoom() {
                 return this.zoomValue / 100;
             },
-            width() {
+            svgWidth() {
                 return this.widthValue * this.zoom;
             },
-            height() {
+            svgHeight() {
                 return this.heightValue * this.zoom;
+            },
+            selectedRect() {
+                return this.rects.find(e => e.selected);
+            },
+            circles() { // 返回用于调整rect尺寸大小的圆圈数组
+                let arr = [];
+                if (this.selectedRect) {
+                    let {x, y, width, height} = this.rectPosition(this.selectedRect);
+                    // 边上四个点
+                    arr.push({cx: x + width / 2, cy: y});
+                    arr.push({cx: x + width / 2, cy: y + height});
+                    arr.push({cx: x + width, cy: y + height / 2});
+                    arr.push({cx: x, cy: y + height / 2});
+                    // 顶点四个点
+                    arr.push({cx: x, cy: y});
+                    arr.push({cx: x + width, cy: y});
+                    arr.push({cx: x + width, cy: y + height});
+                    arr.push({cx: x, cy: y + height});
+                }
+                return arr;
             }
         },
-        mounted() {
-            console.log(this.$scopedSlots);
-            console.log(this.$slots);
-        }
     }
 </script>
 <style scoped>
@@ -70,4 +132,13 @@
         border: 1px solid #ababab;
         box-shadow: 0 0 8px #ababab;
     }
+
+    rect {
+        cursor: move;
+        fill: white;
+        stroke: black;
+        stroke-width: 1;
+        animation: run 10s linear infinite;
+    }
+
 </style>
