@@ -15,7 +15,7 @@
                 <el-button type="text">
                     添加<i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
-                <template v-slot:dropdown>
+                <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item v-for="i in types" :key="i.value" :command="i.value">{{i.name}}</el-dropdown-item>
                     </el-dropdown-menu>

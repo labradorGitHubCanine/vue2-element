@@ -15,7 +15,7 @@
             <el-button circle type="success" icon="el-icon-setting"></el-button>
             <el-dropdown @command="command" show-timeout="0">
                 <el-button circle type="primary" icon="el-icon-user"></el-button>
-                <template v-slot:dropdown>
+                <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item icon="el-icon-user">个人信息</el-dropdown-item>
                         <el-dropdown-item icon="el-icon-key">修改密码</el-dropdown-item>
