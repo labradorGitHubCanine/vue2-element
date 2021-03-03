@@ -14,10 +14,10 @@
                     <h2 style="text-align: center">Vue2-Element</h2>
                     <el-form size="large">
                         <el-form-item>
-                            <el-input></el-input>
+                            <el-input v-model="form.username" prefix-icon="el-icon-user" placeholder="用户名" clearable></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-input></el-input>
+                            <el-input v-model="form.password" prefix-icon="el-icon-key" placeholder="密码" clearable type="password"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-checkbox>记住密码</el-checkbox>
@@ -42,6 +42,7 @@
         },
         data() {
             return {
+                form: {},
                 defaultOptions: {
                     path: a,
                     loop: true,

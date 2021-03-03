@@ -61,6 +61,12 @@
         align-items: center;
     }
 
+    /* 由于sub-menu组件外层包裹了div，在收缩状态下，拥有子菜单的菜单仍然会显示文字和下拉箭头，所以用样式修复一下*/
+    >>> .el-menu--collapse span,
+    >>> .el-menu--collapse .el-submenu__icon-arrow {
+        display: none;
+    }
+
     aside {
         width: auto !important;
         display: flex;

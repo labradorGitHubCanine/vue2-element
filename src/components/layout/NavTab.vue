@@ -1,7 +1,7 @@
 <template>
-    <el-tabs :value="$route.name">
+    <el-tabs :value="$route.name" type="card">
         <el-tab-pane v-for="i in tabs" :key="i.name" :name="i.name">
-            <template v-slot:label>
+            <template #label>
                 <div @contextmenu.prevent="contextmenu">
                     {{i.title}}
                 </div>
@@ -40,7 +40,5 @@
     }
 </script>
 <style scoped>
-    >>> .el-tabs__header { /*取消tab下边距*/
-        margin-bottom: 0 !important;
-    }
+
 </style>
