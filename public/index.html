@@ -3,8 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- 全屏显示 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank"><!-- 隐藏状态栏 -->
+    <meta name="format-detection" content="telephone=no"><!-- iphone会将看起来像电话号码的数字添加电话链接，这里关闭掉 -->
+    <link rel="icon" href="favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
 
     <!-- vue + vue-router + axios -->

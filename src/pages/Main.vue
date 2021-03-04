@@ -5,7 +5,6 @@
             <header-bar/>
             <el-scrollbar>
                 <el-main id="main-container">
-                    <nav-tab/>
                     <keep-alive>
                         <router-view style="min-height: 36rem"/>
                     </keep-alive>
@@ -19,9 +18,8 @@
     import AsideMenu from "@/components/layout/AsideMenu";
     import FooterBar from "@/components/layout/FooterBar";
     import HeaderBar from "@/components/layout/HeaderBar";
-    import NavTab from "@/components/layout/NavTab";
 
     export default {
-        components: {AsideMenu, FooterBar, HeaderBar,NavTab},
+        components: {AsideMenu, FooterBar, HeaderBar},
     }
 </script>

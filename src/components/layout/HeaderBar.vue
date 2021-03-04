@@ -1,14 +1,7 @@
 <template>
     <el-header id="header-bar">
-        <div>
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>
-                    <a href="/">活动管理</a>
-                </el-breadcrumb-item>
-                <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-            </el-breadcrumb>
+        <div style="font-size: 20px">
+            <i style="cursor: pointer" :class="'el-icon-s-' + (isCollapse ? 'unfold' : 'fold')" @click="collapse"></i>
         </div>
         <div>
             <el-button circle type="info" icon="el-icon-message"></el-button>
@@ -27,9 +20,18 @@
     </el-header>
 </template>
 <script>
+    import {mutations, store} from "@/plugins/store";
 
     export default {
+        computed: {
+            isCollapse() {
+                return store.asideMenuIsCollapse;
+            }
+        },
         methods: {
+            collapse() {
+                mutations.collapseMenu();
+            },
             command(e) {
                 switch (e) {
                     case 'logout':

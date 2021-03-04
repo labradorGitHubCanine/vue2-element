@@ -7,5 +7,7 @@
     <orderEntry type="library" name="vue-router" level="application" />
     <orderEntry type="library" name="vuex" level="application" />
     <orderEntry type="library" name="element" level="application" />
+    <orderEntry type="library" name="lottie" level="application" />
+    <orderEntry type="library" name="intro.js" level="application" />
   </component>
 </module>
