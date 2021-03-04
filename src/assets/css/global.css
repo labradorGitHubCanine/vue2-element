@@ -12,3 +12,7 @@ html, body {
 ::-webkit-scrollbar {
     display: none;
 }
+
+.el-scrollbar {
+    height: 100%;
+}

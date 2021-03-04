@@ -13,10 +13,11 @@
 
         <!-- 移动端菜单 -->
         <el-drawer v-else :visible.sync="isDrawerOpen" direction="ltr" :size="256" :with-header="false">
-            <el-header></el-header>
-            <el-menu unique-opened :default-active="$route.name" @select="select">
-                <sub-menu v-for="(i, j) in menus" :key="j" :index="j" :menu="i"></sub-menu>
-            </el-menu>
+            <el-scrollbar>
+                <el-menu unique-opened :default-active="$route.name" @select="select">
+                    <sub-menu v-for="(i, j) in menus" :key="j" :index="j" :menu="i"></sub-menu>
+                </el-menu>
+            </el-scrollbar>
         </el-drawer>
 
     </el-aside>
