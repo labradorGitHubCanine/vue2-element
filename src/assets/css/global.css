@@ -13,6 +13,6 @@ html, body {
     display: none;
 }
 
-.el-scrollbar {
+.el-scrollbar { /* 不加这个在某些界面显示会有问题 */
     height: 100%;
 }
