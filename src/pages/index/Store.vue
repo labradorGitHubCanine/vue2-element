@@ -12,26 +12,13 @@
         <p>
             <el-link type="primary" @click="docs">Vue.observable</el-link>
         </p>
-        <p>
-            测试
-            <el-button @click="add">count++</el-button>
-            count:{{count}}
-        </p>
     </div>
 </template>
 <script>
-    import {mutations, store} from "@/plugins/store";
-
     export default {
         methods: {
-            add: mutations.add,
             docs() {
                 window.open('https://cn.vuejs.org/v2/api/#Vue-observable');
-            }
-        },
-        computed: {
-            count() {
-                return store.count;
             }
         },
     }
