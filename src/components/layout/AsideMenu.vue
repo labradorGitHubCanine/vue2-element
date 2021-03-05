@@ -31,9 +31,10 @@
 </template>
 <script>
     import menus from '@/assets/json/menus.json'
-    import SubMenu from "@/components/layout/SubMenu";
     import StorageUtil from "@/plugins/util/storage-util";
     import {mutations, store} from "@/plugins/store";
+
+    const SubMenu = () => import( "@/components/layout/SubMenu");
 
     export default {
         components: {SubMenu},

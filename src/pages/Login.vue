@@ -32,8 +32,9 @@
 </template>
 <script>
     import StorageUtil from "@/plugins/util/storage-util";
-    import Lottie from "@/components/Lottie";
     import a from "@/assets/json/16952-group-working.json"
+
+    const Lottie = () => import('@/components/Lottie');
 
     export default {
         components: {Lottie},

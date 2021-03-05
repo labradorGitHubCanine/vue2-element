@@ -3,9 +3,10 @@
     <chart :options="options"></chart>
 </template>
 <script>
-    import {Chart} from 'highcharts-vue'
+    const {Chart} = window.HighchartsVue
+    const Highcharts = window.Highcharts
 
-    import Highcharts from 'highcharts'
+    console.log(Highcharts.exporting)
 
     require('highcharts/modules/exporting')(Highcharts); // 启用导出模块
     require('highcharts/modules/data')(Highcharts); // 启用data模块

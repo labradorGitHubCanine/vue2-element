@@ -9,5 +9,7 @@
     <orderEntry type="library" name="element" level="application" />
     <orderEntry type="library" name="lottie" level="application" />
     <orderEntry type="library" name="intro.js" level="application" />
+    <orderEntry type="library" name="highcharts" level="application" />
+    <orderEntry type="library" name="highcharts-vue" level="application" />
   </component>
 </module>
