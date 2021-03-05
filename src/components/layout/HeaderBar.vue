@@ -1,13 +1,14 @@
 <template>
     <el-header id="header-bar">
-        <div style="font-size: 20px">
-            <i style="cursor: pointer" :class="'el-icon-s-' + (isCollapse ? 'unfold' : 'fold')" @click="collapse"></i>
-        </div>
+        <el-button type="text"
+                   :icon="'el-icon-s-' + (isCollapse ? 'unfold' : 'fold')"
+                   style="font-size: 24px"
+                   @click="collapse"></el-button>
         <div>
             <el-button circle type="info" icon="el-icon-message"></el-button>
             <el-button circle type="success" icon="el-icon-setting"></el-button>
             <el-dropdown @command="command" show-timeout="0">
-                <el-button circle type="primary" icon="el-icon-user"></el-button>
+                <el-button circle type="primary" style="margin: 0 !important;" icon="el-icon-user"></el-button>
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item icon="el-icon-user">个人信息</el-dropdown-item>

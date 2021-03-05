@@ -5,7 +5,10 @@
         <template v-if="!isMobile">
             <el-header></el-header>
             <el-scrollbar>
-                <el-menu :collapse="isCollapse" unique-opened :default-active="$route.name" @select="select">
+                <el-menu :collapse="isCollapse" unique-opened :default-active="$route.name" @select="select"
+                         :background-color="backgroundColor"
+                         :text-color="textColor"
+                         :active-text-color="activeTextColor">
                     <sub-menu v-for="(i, j) in menus" :key="j" :index="j" :menu="i"></sub-menu>
                 </el-menu>
             </el-scrollbar>
@@ -13,8 +16,12 @@
 
         <!-- 移动端菜单 -->
         <el-drawer v-else :visible.sync="isDrawerOpen" direction="ltr" :size="256" :with-header="false">
+            <el-header></el-header>
             <el-scrollbar>
-                <el-menu unique-opened :default-active="$route.name" @select="select">
+                <el-menu unique-opened :default-active="$route.name" @select="select"
+                         :background-color="backgroundColor"
+                         :text-color="textColor"
+                         :active-text-color="activeTextColor">
                     <sub-menu v-for="(i, j) in menus" :key="j" :index="j" :menu="i"></sub-menu>
                 </el-menu>
             </el-scrollbar>
@@ -32,7 +39,10 @@
         components: {SubMenu},
         data() {
             return {
-                menus: menus
+                menus: menus,
+                backgroundColor: '#001529',
+                textColor: 'hsla(0, 0%, 100%, .65)',
+                activeTextColor: '#fff',
             }
         },
         computed: {
@@ -70,8 +80,12 @@
         }
     }
 </script>
-<style scoped>
+<style scoped lang="scss">
+
+    @import "src/assets/css/element-variables";
+
     aside {
+        background-color: #001529;
         width: auto !important;
         display: flex;
         flex-direction: column;
@@ -79,34 +93,50 @@
         box-shadow: 2px 0 8px rgba(29, 35, 41, .05);
     }
 
-    .el-menu:not(.el-menu--collapse) {
-        width: 192px;
-    }
-
     .el-menu {
         border: none;
         overflow-x: hidden;
+
+        &:not(.el-menu--collapse) {
+            width: 192px;
+        }
+
+        /* 一级菜单全是56px，二级item50px，二级下拉菜单又是56px，给它统一一下都是50px */
+        ::v-deep .el-menu-item,
+        ::v-deep .el-submenu__title {
+            height: 50px;
+        }
     }
 
-    >>> .el-menu-item,
-    >>> .el-submenu__title { /* 菜单的字有点往下歪，修正一下 */
+    ::v-deep .el-menu-item,
+    ::v-deep .el-submenu__title { /* 菜单的字有点往下歪，修正一下 */
         display: flex;
         align-items: center;
+
+        &:hover {
+            background-color: #2c3e50 !important;
+        }
+
+        &.is-active {
+            background-color: $--color-primary !important;
+        }
     }
 
     /* 由于sub-menu组件外层包裹了div，在收缩状态下，拥有子菜单的菜单仍然会显示文字和下拉箭头，所以用样式修复一下*/
-    >>> .el-menu--collapse span,
-    >>> .el-menu--collapse .el-submenu__icon-arrow {
-        display: none;
+    ::v-deep .el-menu--collapse {
+        span, .el-submenu__icon-arrow {
+            display: none;
+        }
     }
 
     /* 移动端抽屉菜单的相关样式 */
-    >>> .el-drawer__body {
+    ::v-deep .el-drawer__body {
         overflow: auto;
-    }
+        background-color: #001529;
 
-    .el-drawer__body .el-menu {
-        width: 100%;
+        .el-menu {
+            width: 100%;
+        }
     }
 
 </style>

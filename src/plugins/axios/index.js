@@ -1,14 +1,14 @@
-import axios from 'axios'
-import {Message, MessageBox} from 'element-ui'
 import router from '@/plugins/router'
 import JsonUtil from "@/plugins/util/json-util";
 import StorageUtil from "@/plugins/util/storage-util";
 
+const axios = window.axios
+const {Message, MessageBox} = window.ELEMENT
 const qs = require('querystring');
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ?
-    '开发环境url' :
-    '生产环境url';
+    'http://localhost:8080/' :
+    'http://localhost:8080/'
 
 axios.defaults.timeout = 8000; // 超时时间，毫秒
 axios.defaults.crossDomain = true;
