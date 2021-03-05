@@ -13,6 +13,7 @@
     "@vue/cli-service": "~4.5.11",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
+    "compression-webpack-plugin": "^1.1.12",
     "element-ui": "^2.15.1",
     "eslint": "^7.20.0",
     "eslint-plugin-vue": "^7.6.0",
