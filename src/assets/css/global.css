@@ -8,11 +8,3 @@ html, body {
     width: 100% !important;
     height: 100% !important;
 }
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-.el-scrollbar { /* 不加这个在某些界面显示会有问题 */
-    height: 100%;
-}

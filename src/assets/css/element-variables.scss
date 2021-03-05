@@ -8,4 +8,12 @@ $--table-header-background-color: #fafafa;
 
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+.el-scrollbar { /* 不加这个在某些界面显示会有问题 */
+  height: 100%;
+}
+
 @import "~element-ui/packages/theme-chalk/src/index";

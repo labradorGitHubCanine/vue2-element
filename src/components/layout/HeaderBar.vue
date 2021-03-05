@@ -1,14 +1,13 @@
 <template>
-    <el-header id="header-bar">
-        <el-button type="text"
+    <el-header>
+        <el-button type="text" @click="collapse"
                    :icon="'el-icon-s-' + (isCollapse ? 'unfold' : 'fold')"
-                   style="font-size: 24px"
-                   @click="collapse"></el-button>
+        ></el-button>
         <div>
-            <el-button circle type="info" icon="el-icon-message"></el-button>
-            <el-button circle type="success" icon="el-icon-setting"></el-button>
+            <el-button type="text" icon="el-icon-message"></el-button>
+            <el-button type="text" icon="el-icon-setting"></el-button>
             <el-dropdown @command="command" show-timeout="0">
-                <el-button circle type="primary" style="margin: 0 !important;" icon="el-icon-user"></el-button>
+                <el-button type="text" style="margin: 0 !important;" icon="el-icon-user"></el-button>
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item icon="el-icon-user">个人信息</el-dropdown-item>
@@ -50,11 +49,15 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+        box-shadow: 0 1px 4px rgba(0, 21, 41, .05);
         z-index: 1;
     }
 
     header div > * {
-        margin: 0 4px 0 4px !important;
+        margin: 0 8px 0 8px !important;
+    }
+
+    .el-button--text {
+        font-size: 20px;
     }
 </style>

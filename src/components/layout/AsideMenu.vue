@@ -1,5 +1,5 @@
 <template>
-    <el-aside id="aside-menu">
+    <el-aside>
 
         <!-- 桌面端菜单 -->
         <template v-if="!isMobile">
@@ -33,8 +33,7 @@
     import menus from '@/assets/json/menus.json'
     import StorageUtil from "@/plugins/util/storage-util";
     import {mutations, store} from "@/plugins/store";
-
-    const SubMenu = () => import( "@/components/layout/SubMenu");
+    import SubMenu from "@/components/layout/SubMenu";
 
     export default {
         components: {SubMenu},
@@ -105,7 +104,7 @@
         /* 一级菜单全是56px，二级item50px，二级下拉菜单又是56px，给它统一一下都是50px */
         ::v-deep .el-menu-item,
         ::v-deep .el-submenu__title {
-            height: 50px;
+            height: 56px;
         }
     }
 
@@ -116,6 +115,10 @@
 
         &:hover {
             background-color: #2c3e50 !important;
+
+            span {
+                color: #fff;
+            }
         }
 
         &.is-active {

@@ -1,5 +1,5 @@
 <template>
-    <div style="display: flex; align-items: center; justify-content: center">
+    <div style="display: flex; align-items: center; justify-content: center; background-color: #eee">
         <el-card style="width: 45rem">
             <el-row>
                 <el-col :span="12" class="hidden-sm-and-down">
@@ -31,10 +31,9 @@
     </div>
 </template>
 <script>
-    import StorageUtil from "@/plugins/util/storage-util";
+    import StorageUtil from "@/plugins/util/storage-util"
     import a from "@/assets/json/16952-group-working.json"
-
-    const Lottie = () => import('@/components/Lottie');
+    import Lottie from "@/components/Lottie"
 
     export default {
         components: {Lottie},

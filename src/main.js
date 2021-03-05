@@ -7,8 +7,6 @@ import '@/assets/css/element-variables.scss'
 
 Vue.config.productionTip = false
 
-console.log(window.Vue)
-
 Vue.use(window.ELEMENT, {
     size: 'small'
 })
