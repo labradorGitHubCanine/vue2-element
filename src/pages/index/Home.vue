@@ -7,6 +7,7 @@
             <el-link type="primary" @click="github">github地址</el-link>
         </p>
 
+
         <p>与整体页面布局相关的组件位于src\components\layout目录下</p>
         <p>
             <el-link type="primary" @click="startIntro">布局简介</el-link>

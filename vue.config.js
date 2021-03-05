@@ -33,30 +33,17 @@ module.exports = {
                 new CompressionPlugin({
                     algorithm: 'gzip',  //
                     test: /\.(js|css|woff|woff2|svg)$/, // 哪些文件会被压缩
-                    threshold: 10240, // 对超过10k的数据压缩
+                    threshold: 0, // 超过多大的文件才进行压缩，单位b
                     deleteOriginalAssets: false, // 不删除压缩前的文件，如果浏览器不支持 Gzip ,则会加载源文件
-                    minRatio: 0.8 // 压缩比大于 0.8 的文件将不会被压缩
+                    minRatio: 1 // 压缩比大于 多少的文件不会被压缩 范围0-1，0表示都不压缩，1表示全部压缩
                 })
             )
 
-            // 将 js 文件夹添加时间戳，这样浏览器不会加载上个版本缓存的代码
-            config.output.filename = `js/[name].${timeStamp}.js`
-            config.output.chunkFilename = `js/[name].${timeStamp}.js`
+            let time = new Date().getTime();
 
-        } else {
-            // 开发环境配置
-        }
-        return {
-            externals: {
-                'vue': 'Vue',
-                'vue-router': 'VueRouter',
-                'axios': 'axios',
-                'element-ui': 'ElementUI',
-                'lottie': 'lottie',
-                'introJs': 'introJs',
-                'highcharts': 'highcharts',
-                'highcharts-vue': 'highcharts-vue'
-            }
+            // 将 js 文件夹添加时间戳，这样浏览器不会加载上个版本缓存的代码
+            config.output.filename = `js/[name].${time}.js`
+            config.output.chunkFilename = `js/[name].${time}.js`
         }
     },
 }
