@@ -109,9 +109,9 @@
     }
 
     ::v-deep .el-menu-item,
-    ::v-deep .el-submenu__title { /* 菜单的字有点往下歪，修正一下 */
+    ::v-deep .el-submenu__title {
         display: flex;
-        align-items: center;
+        align-items: center; /* 菜单的字有点往下歪，修正一下 */
 
         &:hover {
             background-color: #2c3e50 !important;
