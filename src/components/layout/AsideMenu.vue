@@ -3,7 +3,9 @@
 
         <!-- 桌面端菜单 -->
         <template v-if="!isMobile">
-            <el-header></el-header>
+            <el-header style="display: flex; align-items: center">
+                <el-image style="width: auto" v-if="!isCollapse" :src="logo"></el-image>
+            </el-header>
             <el-scrollbar>
                 <el-menu :collapse="isCollapse" unique-opened :default-active="$route.name" @select="select"
                          :background-color="backgroundColor"
@@ -16,7 +18,9 @@
 
         <!-- 移动端菜单 -->
         <el-drawer v-else :visible.sync="isDrawerOpen" direction="ltr" :size="256" :with-header="false">
-            <el-header></el-header>
+            <el-header style="display: flex; align-items: center">
+                <el-image :src="logo"></el-image>
+            </el-header>
             <el-scrollbar>
                 <el-menu unique-opened :default-active="$route.name" @select="select"
                          :background-color="backgroundColor"
@@ -39,6 +43,7 @@
         components: {SubMenu},
         data() {
             return {
+                logo: require("@/assets/image/logo.svg"),
                 menus: menus,
                 backgroundColor: '#001529',
                 textColor: 'hsla(0, 0%, 100%, .65)',
