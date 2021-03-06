@@ -69,8 +69,10 @@ axios.interceptors.response.use(
         }
     },
     error => {
+        console.log(error.code);
+        console.log(error.response.status);
         Message.error(error.message);
-        return Promise.reject(error.message);
+        return Promise.reject(error);
     }
 );
 

@@ -1,14 +1,9 @@
 <template>
-    <div style="display: flex; align-items: center; justify-content: center; background-color: #eee">
-        <el-card style="width: 45rem">
+    <div style="display: flex; align-items: center; justify-content: center">
+        <el-card style="width: 50rem">
             <el-row>
                 <el-col :span="12" class="hidden-sm-and-down">
-                    <lottie ref="lottie_web"
-                            :animation-data="defaultOptions.path"
-                            :loop="defaultOptions.loop"
-                            :animation-speed="defaultOptions.animationSpeed"
-                            @isLottieFinish="handleLottieFinish"
-                    />
+                    <lottie :animation-data="path"/>
                 </el-col>
                 <el-col :md="12" :sm="24">
                     <h2 style="text-align: center">Vue2-Element</h2>
@@ -32,7 +27,6 @@
 </template>
 <script>
     import StorageUtil from "@/plugins/util/storage-util"
-    import a from "@/assets/json/16952-group-working.json"
     import Lottie from "@/components/Lottie"
 
     export default {
@@ -43,28 +37,12 @@
         data() {
             return {
                 form: {},
-                defaultOptions: {
-                    path: a,
-                    loop: true,
-                    animationSpeed: 1
-                }
+                path: require("@/assets/json/working.json"),
             }
         },
         methods: {
             login() {
                 this.$router.push({name: 'main'});
-            },
-            play() {
-                this.$refs.lottie_web.play()
-            },
-            stop() {
-                this.$refs.lottie_web.stop()
-            },
-            pause() {
-                this.$refs.lottie_web.pause()
-            },
-            handleLottieFinish() {
-                // 事件处理
             }
         }
     }

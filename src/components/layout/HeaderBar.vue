@@ -4,7 +4,7 @@
                    :icon="'el-icon-s-' + (isCollapse ? 'unfold' : 'fold')"
         ></el-button>
         <div>
-            <el-button type="text" icon="el-icon-message"></el-button>
+                <el-button type="text" icon="el-icon-message"></el-button>
             <el-button type="text" icon="el-icon-setting"></el-button>
             <el-dropdown @command="command" show-timeout="0">
                 <el-button type="text" style="margin: 0 !important;" icon="el-icon-user"></el-button>
