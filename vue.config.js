@@ -8,18 +8,6 @@ module.exports = {
         config.plugins.delete('prefetch')
     },
     productionSourceMap: false,
-    // configureWebpack:  {
-    //     externals: {
-    //         'vue': 'Vue',
-    //         'vue-router': 'VueRouter',
-    //         'axios': 'axios',
-    //         'element-ui': 'ElementUI',
-    //         'lottie': 'lottie',
-    //         'introJs': 'introJs',
-    //         'highcharts': 'highcharts',
-    //         'highcharts-vue': 'highcharts-vue'
-    //     }
-    // },
     configureWebpack: config => {
         // 生产环境配置
         if (process.env.NODE_ENV === 'production') {
@@ -33,18 +21,18 @@ module.exports = {
                 new CompressionPlugin({
                     algorithm: 'gzip',  //
                     test: /\.(js|css|woff|woff2|svg)$/, // 哪些文件会被压缩
-                    threshold: 0, // 超过多大的文件才进行压缩，单位b
+                    threshold: 10240, // 超过多大的文件才进行压缩，单位b
                     deleteOriginalAssets: false, // 不删除压缩前的文件，如果浏览器不支持 Gzip ,则会加载源文件
-                    minRatio: 1 // 压缩比大于 多少的文件不会被压缩 范围0-1，0表示都不压缩，1表示全部压缩
+                    minRatio: 0.8 // 压缩比大于 多少的文件不会被压缩 范围0-1，0表示都不压缩，1表示全部压缩
+                    // 由于解压缩也需要耗时，所以较小的文件或压缩比率不大的文件不需要压缩
                 })
             )
 
-            let time = new Date().getTime();
+            let time = new Date().getTime()
 
             // 将 js 文件夹添加时间戳，这样浏览器不会加载上个版本缓存的代码
             config.output.filename = `js/[name].${time}.js`
             config.output.chunkFilename = `js/[name].${time}.js`
         }
-    },
+    }
 }
-
