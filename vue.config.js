@@ -29,7 +29,6 @@ module.exports = {
             )
 
             let time = new Date().getTime()
-
             // 将 js 文件夹添加时间戳，这样浏览器不会加载上个版本缓存的代码
             config.output.filename = `js/[name].${time}.js`
             config.output.chunkFilename = `js/[name].${time}.js`
