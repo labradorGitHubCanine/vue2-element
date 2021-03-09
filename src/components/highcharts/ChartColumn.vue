@@ -4,23 +4,6 @@
 </template>
 <script>
     const {Chart} = window.HighchartsVue
-    const Highcharts = window.Highcharts
-
-    console.log(Highcharts.exporting)
-
-    require('highcharts/modules/exporting')(Highcharts); // 启用导出模块
-    require('highcharts/modules/data')(Highcharts); // 启用data模块
-
-    Highcharts.setOptions({
-        lang: {
-            contextButtonTitle: '操作',
-            downloadJPEG: '导出为JPEG',
-            downloadPDF: '导出为PDF',
-            downloadPNG: '导出为PNG',
-            downloadSVG: '导出为SVG',
-            printChart: '打印'
-        }
-    });
 
     export default {
         props: {
