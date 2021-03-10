@@ -15,4 +15,8 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
   height: 100%;
 }
 
+[v-cloak] { /* 解决初始文字未渲染时显示为{{...}}的问题*/
+  display: none;
+}
+
 @import "~element-ui/packages/theme-chalk/src/index";
