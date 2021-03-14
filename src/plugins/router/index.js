@@ -11,6 +11,7 @@ const router = new VueRouter({
         {path: '/', redirect: '/login'},
         {name: 'login', path: '/login', component: () => import('@/pages/Login'), meta: {title: '登录'}},
         {name: 'main', path: '/main', component: () => import('@/pages/Main'), children: []},
+        {name: 'blog', path: '/blog', component: () => import('@/blogs/Blog'), children: []},
         {name: '404', path: '*', component: () => import('@/pages/error/404')}
     ]
 })
