@@ -19,4 +19,8 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
   display: none;
 }
 
+.el-upload-list__item { // 去除文件预览的动画效果，个人不太喜欢
+  transition: none !important;
+}
+
 @import "~element-ui/packages/theme-chalk/src/index";
