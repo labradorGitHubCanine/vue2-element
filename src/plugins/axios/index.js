@@ -7,8 +7,8 @@ const {Message, MessageBox} = window.ELEMENT
 const qs = require('querystring');
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ?
-    'http://localhost:8080/' :
-    'http://localhost:8080/'
+    'http://118.25.11.58:8080/' :
+    'http://118.25.11.58:8080/'
 
 axios.defaults.timeout = 8000; // 超时时间，毫秒
 axios.defaults.crossDomain = true;
@@ -70,7 +70,7 @@ axios.interceptors.response.use(
     },
     error => {
         console.log(error.code);
-        console.log(error.response.status);
+        console.log(error.response);
         Message.error(error.message);
         return Promise.reject(error);
     }

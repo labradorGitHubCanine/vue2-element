@@ -11,7 +11,8 @@ const router = new VueRouter({
         {path: '/', redirect: '/login'},
         {name: 'login', path: '/login', component: () => import('@/pages/Login'), meta: {title: '登录'}},
         {name: 'main', path: '/main', component: () => import('@/pages/Main'), children: []},
-        {name: 'blog', path: '/blog', component: () => import('@/blogs/Blog'), children: []},
+        {name: 'blog', path: '/blog', component: () => import('@/pages/blog/Blog'), children: []},
+        {name: 'util', path: '/util', component: () => import('@/pages/util/Util'), children: []},
         {name: '404', path: '*', component: () => import('@/pages/error/404')}
     ]
 })
