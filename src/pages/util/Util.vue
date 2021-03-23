@@ -20,7 +20,15 @@
                 this.files.push(e.file);
             },
             submit() {
-                this.$axios.post('upload')
+                let formData = new FormData();
+                this.files.forEach(e => {
+                    formData.append('file', e);
+                })
+                this.$axios.post(
+                    'upload',
+                    formData,
+                    {headers: {'Content-Type': 'multipart/form-data'}}
+                )
             }
         }
     }

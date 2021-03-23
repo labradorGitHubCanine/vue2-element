@@ -7,7 +7,7 @@ const {Message, MessageBox} = window.ELEMENT
 const qs = require('querystring');
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ?
-    'http://118.25.11.58:8080/' :
+    'http://localhost:8080/' :
     'http://118.25.11.58:8080/'
 
 axios.defaults.timeout = 8000; // 超时时间，毫秒
@@ -53,8 +53,8 @@ axios.interceptors.response.use(
 
         switch (code) {
             case 1: // 成功
-                if (['post', 'put', 'delete'].includes(res.config.method))
-                    Message.success({message: msg, showClose: true});
+                // if (['post', 'put', 'delete'].includes(res.config.method))
+                //     Message.success({message: msg, showClose: true});
                 return Promise.resolve(data);
             case 0: // 失败
                 Message.error({message: msg, showClose: true});
