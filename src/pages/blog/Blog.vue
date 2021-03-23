@@ -9,8 +9,6 @@
             </el-tabs>
         </el-header>
 
-        <!--        <div style="height: 600px; background-attachment: fixed" :style="{backgroundImage: `url(${bg})`}"></div>-->
-
         <el-main v-loading="loading">
 
             <el-form inline>
@@ -46,7 +44,7 @@
                 </el-table-column>
             </el-table>
 
-            <pagination data="{}" total="1"></pagination>
+            <pagination v-model="form" :total="total" style="margin-top: 8px"></pagination>
 
         </el-main>
     </div>
@@ -61,6 +59,7 @@
             bg: require('@/assets/image/bg01.jpg'),
             loading: false,
             form: {},
+            total: 0,
             records: [],
             labels: []
         }),
@@ -70,6 +69,7 @@
                 this.$axios.get('blog', {params: this.form}).then(e => {
                     this.records = e.records;
                     this.labels = e.extra.labels;
+                    this.total = e.total;
                 }).finally(() => this.loading = false);
             },
             open({id, url}) {

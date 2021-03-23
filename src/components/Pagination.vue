@@ -8,7 +8,6 @@
                    :current-page="data.pageNum || 1"
                    :pager-count="small || this.$store.isMobile ? 5 : 7"
                    :page-size="data.pageSize || 10"
-                   :page-sizes="[10, 20, 50, 100]"
                    @current-change="currentChange"
                    @size-change="sizeChange"
     ></el-pagination>
