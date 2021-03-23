@@ -2,12 +2,10 @@
     <el-aside>
 
         <!-- 桌面端菜单 -->
-        <template v-if="!this.$store.isMobile">
-            <el-header style="display: flex; align-items: center">
-                <el-image style="width: auto" v-if="!this.$store.asideMenuIsCollapse" :src="logo"></el-image>
-            </el-header>
+        <template v-if="!isMobile">
+            <el-header style="display: flex; align-items: center"></el-header>
             <el-scrollbar>
-                <el-menu :collapse="isCollapse" unique-opened :default-active="$route.name" @select="select"
+                <el-menu :collapse="isCollapsed" unique-opened :default-active="$route.name" @select="select"
                          :background-color="backgroundColor"
                          :text-color="textColor"
                          :active-text-color="activeTextColor">
@@ -18,9 +16,7 @@
 
         <!-- 移动端菜单 -->
         <el-drawer v-else :visible.sync="isDrawerOpen" direction="ltr" :size="256" :with-header="false">
-            <el-header style="display: flex; align-items: center">
-                <el-image :src="logo"></el-image>
-            </el-header>
+            <el-header style="display: flex; align-items: center"></el-header>
             <el-scrollbar>
                 <el-menu unique-opened :default-active="$route.name" @select="select"
                          :background-color="backgroundColor"
@@ -38,11 +34,12 @@
     import StorageUtil from "@/plugins/util/storage-util";
     import SubMenu from "@/components/layout/SubMenu";
 
+    const {mapState} = window.Vuex;
+
     export default {
         components: {SubMenu},
         data() {
             return {
-                logo: require("@/assets/image/logo.svg"),
                 menus: menus,
                 backgroundColor: '#001529',
                 textColor: 'hsla(0, 0%, 100%, .65)',
@@ -52,19 +49,23 @@
         computed: {
             isDrawerOpen: {
                 get() {
-                    return !this.$store.asideMenuIsCollapse;
+                    return !this.$store.state.asideMenuIsCollapsed;
                 },
                 set() {
-                    this.$mutations.collapseMenu();
+                    this.$store.commit('collapseMenu');
                 }
-            }
+            },
+            ...mapState({
+                isMobile: 'isMobile',
+                isCollapsed: 'asideMenuIsCollapsed'
+            })
         },
         methods: {
             select(index, indexPath) {
                 console.log(indexPath);
                 this.$router.push({name: index});
-                if (this.$store.isMobile)
-                    this.$mutations.collapseMenu();
+                if (this.isMobile)
+                    this.$store.commit('collapseMenu');
             }
         },
         created() {
@@ -99,7 +100,7 @@
             width: 192px;
         }
 
-        /* 一级菜单全是56px，二级item50px，二级下拉菜单又是56px，给它统一一下都是50px */
+        /* 一级菜单全是56px，二级item50px，二级下拉菜单又是56px，给它统一一下都是56px */
         ::v-deep .el-menu-item,
         ::v-deep .el-submenu__title {
             height: 56px;
@@ -107,8 +108,9 @@
     }
 
     ::v-deep .el-menu-item,
-    ::v-deep .el-submenu__title {
-        display: flex;
+    ::v-deep .el-submenu__title,
+    ::v-deep .el-tooltip { /* el-tooltip是菜单折叠起来后菜单图标的上级容器，给它也一起内容居中了，不然折叠切换时会上下抖动 */
+        display: flex !important;
         align-items: center; /* 菜单的字有点往下歪，修正一下 */
 
         &:hover {

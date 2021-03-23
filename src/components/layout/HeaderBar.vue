@@ -1,10 +1,10 @@
 <template>
     <el-header>
-        <el-button type="text" @click="collapse"
-                   :icon="'el-icon-s-' + (isCollapse ? 'unfold' : 'fold')"
+        <el-button type="text" @click="$store.commit('collapseMenu')"
+                   :icon="'el-icon-s-' + ($store.state.asideMenuIsCollapsed ? 'unfold' : 'fold')"
         ></el-button>
         <div>
-                <el-button type="text" icon="el-icon-message"></el-button>
+            <el-button type="text" icon="el-icon-message"></el-button>
             <el-button type="text" icon="el-icon-setting"></el-button>
             <el-dropdown @command="command" show-timeout="0">
                 <el-button type="text" style="margin: 0 !important;" icon="el-icon-user"></el-button>
@@ -20,18 +20,9 @@
     </el-header>
 </template>
 <script>
-    import {mutations, store} from "@/plugins/store";
 
     export default {
-        computed: {
-            isCollapse() {
-                return store.asideMenuIsCollapse;
-            }
-        },
         methods: {
-            collapse() {
-                mutations.collapseMenu();
-            },
             command(e) {
                 switch (e) {
                     case 'logout':
