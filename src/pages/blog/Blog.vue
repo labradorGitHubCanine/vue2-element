@@ -9,7 +9,7 @@
             </el-tabs>
         </el-header>
 
-<!--        <div style="height: 600px; background-attachment: fixed" :style="{backgroundImage: `url(${bg})`}"></div>-->
+        <!--        <div style="height: 600px; background-attachment: fixed" :style="{backgroundImage: `url(${bg})`}"></div>-->
 
         <el-main v-loading="loading">
 
@@ -46,11 +46,15 @@
                 </el-table-column>
             </el-table>
 
+            <pagination data="{}" total="1"></pagination>
+
         </el-main>
     </div>
 
 </template>
 <script>
+
+    import Pagination from "@/components/Pagination"
 
     export default {
         data: () => ({
@@ -81,6 +85,7 @@
                 deep: true
             }
         },
+        components: {Pagination},
         created() {
             this.list();
         }

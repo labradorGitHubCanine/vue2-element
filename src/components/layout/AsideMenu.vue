@@ -2,9 +2,9 @@
     <el-aside>
 
         <!-- 桌面端菜单 -->
-        <template v-if="!isMobile">
+        <template v-if="!this.$store.isMobile">
             <el-header style="display: flex; align-items: center">
-                <el-image style="width: auto" v-if="!isCollapse" :src="logo"></el-image>
+                <el-image style="width: auto" v-if="!this.$store.asideMenuIsCollapse" :src="logo"></el-image>
             </el-header>
             <el-scrollbar>
                 <el-menu :collapse="isCollapse" unique-opened :default-active="$route.name" @select="select"
@@ -36,7 +36,6 @@
 <script>
     import menus from '@/assets/json/menus.json'
     import StorageUtil from "@/plugins/util/storage-util";
-    import {mutations, store} from "@/plugins/store";
     import SubMenu from "@/components/layout/SubMenu";
 
     export default {
@@ -51,18 +50,12 @@
             }
         },
         computed: {
-            isMobile() {
-                return store.isMobile;
-            },
-            isCollapse() {
-                return store.asideMenuIsCollapse;
-            },
             isDrawerOpen: {
                 get() {
-                    return !store.asideMenuIsCollapse;
+                    return !this.$store.asideMenuIsCollapse;
                 },
                 set() {
-                    mutations.collapseMenu();
+                    this.$mutations.collapseMenu();
                 }
             }
         },
@@ -70,8 +63,8 @@
             select(index, indexPath) {
                 console.log(indexPath);
                 this.$router.push({name: index});
-                if (this.isMobile)
-                    mutations.collapseMenu();
+                if (this.$store.isMobile)
+                    this.$mutations.collapseMenu();
             }
         },
         created() {
