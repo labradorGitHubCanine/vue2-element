@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const isMobile = () => document.body.clientWidth <= 991;
 
 const store = new Vuex.Store({
-    strict: true,
+    strict: process.env.NODE_ENV === 'development', // 生产模式不要使用严格模式，否则影响性能
     state: {
         isMobile: isMobile(), // 判断是否移动端，根据element响应式断点判断
         asideMenuIsCollapsed: isMobile(), // 侧边菜单是否折叠，web下展开，mobile下折叠
