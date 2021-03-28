@@ -8,7 +8,7 @@ const qs = require('querystring');
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ?
     'http://localhost:8080/' :
-    'http://118.25.11.58:8080/'
+    'http://118.25.11.58:8081/'
 
 axios.defaults.timeout = 8000; // 超时时间，毫秒
 axios.defaults.crossDomain = true;
