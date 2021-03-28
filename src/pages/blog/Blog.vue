@@ -38,7 +38,7 @@
                             </small>
                         </div>
                         <div>
-                            <el-tag size="mini" type="success" v-for="i in row.label.split(',')" :key="i">{{i}}</el-tag>
+                            <el-tag style="margin: 0 2px 0 2px" size="mini" type="success" v-for="i in row.label.split(',')" :key="i">{{i}}</el-tag>
                         </div>
                     </template>
                 </el-table-column>

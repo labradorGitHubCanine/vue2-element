@@ -2,15 +2,12 @@
     <div>
 
         <el-card>
-            {{messages}}
-            <div v-for="(i, j) in messages" :key="j"
-                 :style="{textAlign: i.type === 'my' ? 'right' : 'left'}"
-            >
+            <div v-for="(i, j) in messages" :key="j" :style="{textAlign: i.type === 'my' ? 'right' : 'left'}">
                 <div class="chat">{{i.msg}}</div>
             </div>
-            <el-input v-model="msg">
+            <el-input v-model="msg" @keyup.enter="send">
                 <template #append>
-                    <el-button @click="send" @keyup.enter="send">发送</el-button>
+                    <el-button @click="send">发送</el-button>
                 </template>
             </el-input>
         </el-card>
