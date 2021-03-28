@@ -23,7 +23,7 @@
             return {
                 url: process.env.NODE_ENV === "development" ?
                     "ws://localhost:8080/websocket" :
-                    "ws://118.25.11.58:8080/websocket",
+                    "ws://118.25.11.58:8081/websocket",
                 websocket: null,
                 messages: [],
                 msg: null
@@ -57,7 +57,7 @@
         width: auto;
         border: 1px solid #ccc;
         border-radius: 5px;
-        padding:  2px 12px 2px 12px;
+        padding: 2px 12px 2px 12px;
         margin: 4px;
     }
 </style>
