@@ -11,5 +11,6 @@
     <orderEntry type="library" name="intro.js" level="application" />
     <orderEntry type="library" name="highcharts" level="application" />
     <orderEntry type="library" name="highcharts-vue" level="application" />
+    <orderEntry type="library" name="vue-drag-resize" level="application" />
   </component>
 </module>

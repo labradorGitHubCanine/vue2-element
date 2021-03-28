@@ -1,38 +1,15 @@
 <template>
-    <el-row>
-        <el-col :span="12">
-            <drag-container :types="types" @add="add" :rects="rects">
-                <template #default="{rect={}}">
-                    <el-form label-width="50px">
-                        <el-form-item label="上">
-                            <el-input-number :controls="false" v-model="rect.top" min="-1" max="1"></el-input-number>
-                        </el-form-item>
-                        <el-form-item label="右">
-                            <el-input-number :controls="false" v-model="rect.right" min="-1" max="1"></el-input-number>
-                        </el-form-item>
-                        <el-form-item label="下">
-                            <el-input-number :controls="false" v-model="rect.bottom" min="-1" max="1"></el-input-number>
-                        </el-form-item>
-                        <el-form-item label="左">
-                            <el-input-number :controls="false" v-model="rect.left" min="-1" max="1"></el-input-number>
-                        </el-form-item>
-                    </el-form>
-                </template>
-            </drag-container>
-        </el-col>
-        <el-col :span="12">
-            <div style=""></div>
-            <div v-for="(i, j) in rects" :key="j">
-                {{i}}
-            </div>
-        </el-col>
-    </el-row>
+    <div>
+        <div class="container">
+            <vue-drag-resize :isActive="true" :w="200" :h="200" :parent-limitation="true"></vue-drag-resize>
+        </div>
+    </div>
 </template>
 <script>
-    import DragContainer from "@/components/DragContainer";
+
+    const VueDragResize = window.VueDragResize.default
 
     export default {
-        components: {DragContainer,},
         data() {
             return {
                 types: [
@@ -45,11 +22,15 @@
                 rects: [],
             }
         },
-        methods: {
-            add(e) {
-                console.log(e);
-                this.rects.push({left: 0.1, right: 0.7, top: 0.1, bottom: 0.7});
-            },
-        }
+        methods: {},
+        components: {VueDragResize}
     }
 </script>
+<style scoped>
+    .container {
+        position: absolute;
+        border: 1px solid;
+        width: 500px;
+        height: 500px;
+    }
+</style>

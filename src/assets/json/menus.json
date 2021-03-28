@@ -12,11 +12,6 @@
     "page": "Optimize"
   },
   {
-    "title": "状态管理",
-    "icon": "el-icon-house",
-    "page": "Store"
-  },
-  {
     "title": "本地存储",
     "icon": "el-icon-house",
     "page": "Storage"
@@ -75,14 +70,14 @@
     "page": "Scroll"
   },
   {
-    "title": "聊天室",
+    "title": "websocket聊天室",
     "icon": "el-icon-house",
-    "page": "Chat"
+    "page": "ChatRoom"
   },
   {
     "title": "Lottie",
     "icon": "el-icon-house",
-    "page": "Chat"
+    "page": "LottieDemo"
   },
   {
     "title": "拖拽",
