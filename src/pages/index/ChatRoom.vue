@@ -60,17 +60,4 @@
         padding:  2px 12px 2px 12px;
         margin: 4px;
     }
-    .chat::after {
-        content: '';
-        position: absolute;
-        border: 1px solid #ccc;
-        border-left: none;
-        border-bottom: none;
-        background: white;
-        width: 8px;
-        height: 8px;
-        margin-top: 6px;
-        margin-left: 8px;
-        transform: rotate(45deg);
-    }
 </style>
