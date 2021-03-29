@@ -7,6 +7,10 @@ import axios from '@/plugins/axios'
 import '@/assets/css/global.css'
 import '@/assets/css/element-variables.scss'
 
+import vueToPdf from 'vue-to-pdf';
+
+Vue.use(vueToPdf);
+
 Vue.config.productionTip = false
 
 Vue.use(window.ELEMENT, {
