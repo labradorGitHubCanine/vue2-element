@@ -70,7 +70,7 @@
         },
         created() {
             this.$router.add(this.menus);
-            if (this.$route.name === 'main') { // 如果当前页面是main，说明没有加载任何页面，则自动加载第一个菜单
+            if (this.$route.name === 'main') { // 如果当前页面是main，说明没有加载任何页面，则自动跳转到第一个菜单
                 let first = this.$router.getRoutes().find(e => e.parent && e.parent.name === 'main');
                 if (first)
                     this.$router.replace({name: first.name});

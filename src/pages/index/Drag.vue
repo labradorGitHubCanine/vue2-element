@@ -1,7 +1,17 @@
 <template>
     <div>
         <div class="container">
-            <vue-drag-resize :isActive="true" :w="200" :h="200" :parent-limitation="true"></vue-drag-resize>
+            <vue-drag-resize
+                             :is-active="true"
+                             :w="200" :h="200"
+                             parent-limitation
+                             v-on="{resizing: resize, dragging: resize}"
+            ></vue-drag-resize>
+            <vue-drag-resize :is-active="true"
+                             :w="200" :h="200"
+                             parent-limitation
+                             v-on="{resizing: resize($event), dragging: resize}"
+            ></vue-drag-resize>
         </div>
     </div>
 </template>
@@ -22,7 +32,11 @@
                 rects: [],
             }
         },
-        methods: {},
+        methods: {
+            resize(rect) {
+                console.log(rect);
+            }
+        },
         components: {VueDragResize}
     }
 </script>
