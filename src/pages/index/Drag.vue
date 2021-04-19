@@ -2,16 +2,27 @@
     <div>
         <div class="container">
             <vue-drag-resize
-                             :is-active="true"
-                             :w="200" :h="200"
-                             parent-limitation
-                             v-on="{resizing: resize, dragging: resize}"
-            ></vue-drag-resize>
+                    :is-active="true"
+                    :w="200" :h="200"
+                    parent-limitation
+                    v-on="{resizing: resize, dragging: resize}"
+            >
+                <button type="button" style="border: none; width: 100%; height: 100%">123</button>
+            </vue-drag-resize>
             <vue-drag-resize :is-active="true"
                              :w="200" :h="200"
                              parent-limitation
                              v-on="{resizing: resize($event), dragging: resize}"
-            ></vue-drag-resize>
+            >
+                <iframe src="http://www.baidu.com" :scrolling="'no'" style="border: none; width: 100%; height: 100%"></iframe>
+            </vue-drag-resize>
+            <vue-drag-resize :is-active="true"
+                             :w="200" :h="200"
+                             parent-limitation
+                             v-on="{resizing: resize($event), dragging: resize}"
+            >
+                <div style="width: 100%; height: 100%; text-align: center">{{new Date().toLocaleString()}}</div>
+            </vue-drag-resize>
         </div>
     </div>
 </template>
