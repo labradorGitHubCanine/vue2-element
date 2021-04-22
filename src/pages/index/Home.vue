@@ -1,15 +1,5 @@
 <template>
     <div>
-        <p>
-            <el-link type="primary" @click="github">github</el-link>
-        </p>
-        <p>这是一个精简版的后台管理模板，其结构大致如下：</p>
-        <el-image style="width: 400px" :src="structure"></el-image>
-        <p>
-            App.vue入口处的router-view会跳转两个主要界面：Login.vue和Main.vue。
-            Main.vue包含三个布局组件外加一个router-view用于展示。
-        </p>
-
         <el-table border :data="[
             {file: 'Login.vue', intro: '登录界面', location: 'src/pages'},
             {file: 'Main.vue', intro: '布局主界面', location: 'src/pages'},
@@ -24,16 +14,5 @@
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                structure: require("@/assets/image/structure.jpg")
-            }
-        },
-        methods: {
-            github() {
-                window.open('https://github.com/labradorGitHubCanine/vue2-element.git')
-            }
-        }
-    }
+    export default {}
 </script>

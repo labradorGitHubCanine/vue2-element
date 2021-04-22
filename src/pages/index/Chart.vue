@@ -1,7 +1,5 @@
 <template>
     <div>
-        <p>由于我个人比较喜欢highcharts的样式，所以在项目中一直都是用的是highcharts，相比于echarts感觉更有质感。</p>
-        <p>话不多说，以下是搭建的结构组件demo，数据样式都比较简单，根据实际业务细化吧。</p>
         <el-row>
             <el-col>
                 <chart-line title="今年销售业绩统计"

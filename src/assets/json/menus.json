@@ -73,10 +73,5 @@
     "title": "Lottie",
     "icon": "el-icon-house",
     "page": "LottieDemo"
-  },
-  {
-    "title": "拖拽",
-    "icon": "el-icon-house",
-    "page": "Drag"
   }
 ]
