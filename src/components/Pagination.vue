@@ -1,12 +1,12 @@
 <template>
     <el-pagination v-if="+total > 0"
-                   :style="{textAlign: this.$store.isMobile ? 'center' : ''}"
+                   :style="{textAlign: isMobile ? 'center' : ''}"
                    :total="+total"
                    :small="small"
                    background
-                   :layout="small || this.$store.isMobile ? 'prev, pager, next' : 'total, sizes, ->, jumper, prev, pager, next'"
+                   :layout="small || isMobile ? 'prev, pager, next' : 'total, sizes, ->, jumper, prev, pager, next'"
                    :current-page="data.pageNum || 1"
-                   :pager-count="small || this.$store.isMobile ? 5 : 7"
+                   :pager-count="small || isMobile ? 5 : 7"
                    :page-size="data.pageSize || 10"
                    @current-change="currentChange"
                    @size-change="sizeChange"
@@ -20,6 +20,11 @@
                     {className: 'hidden-sm-and-down', pagerCount: 7, layout: 'total, sizes, ->, jumper, prev, pager, next'},
                     {className: 'hidden-md-and-up', pagerCount: 5, layout: 'prev, pager, next'},
                 ]
+            }
+        },
+        computed: {
+            isMobile() {
+                return this.$store.state.isMobile
             }
         },
         props: {
