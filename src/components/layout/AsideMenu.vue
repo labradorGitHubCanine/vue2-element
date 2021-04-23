@@ -5,7 +5,7 @@
         <template v-if="!isMobile">
             <el-header style="display: flex; align-items: center"></el-header>
             <el-scrollbar>
-                <el-menu :collapse="isCollapsed" unique-opened :default-active="$route.name" @select="select"
+                <el-menu :collapse="isCollapsed" unique-opened :default-active="activeMenuName" @select="select"
                          :background-color="backgroundColor"
                          :text-color="textColor"
                          :active-text-color="activeTextColor">
@@ -18,7 +18,7 @@
         <el-drawer v-else :visible.sync="isDrawerOpen" direction="ltr" :size="256" :with-header="false">
             <el-header style="display: flex; align-items: center"></el-header>
             <el-scrollbar>
-                <el-menu unique-opened :default-active="$route.name" @select="select"
+                <el-menu unique-opened :default-active="activeMenuName" @select="select"
                          :background-color="backgroundColor"
                          :text-color="textColor"
                          :active-text-color="activeTextColor">
@@ -34,7 +34,7 @@
     import StorageUtil from "@/plugins/util/storage-util";
     import SubMenu from "@/components/layout/SubMenu";
 
-    const {mapState} = window.Vuex;
+    const {mapState, mapMutations} = window.Vuex;
 
     export default {
         components: {SubMenu},
@@ -52,21 +52,26 @@
                     return !this.$store.state.asideMenuIsCollapsed;
                 },
                 set() {
-                    this.$store.commit('collapseMenu');
+                    this.collapseMenu();
                 }
             },
             ...mapState({
                 isMobile: 'isMobile',
-                isCollapsed: 'asideMenuIsCollapsed'
+                isCollapsed: 'asideMenuIsCollapsed',
+                activeMenuName: 'activeMenuName'
             })
         },
         methods: {
-            select(index, indexPath) {
-                console.log(indexPath);
+            select(index) {
                 this.$router.push({name: index});
+                this.setActiveMenuName(index);
                 if (this.isMobile)
-                    this.$store.commit('collapseMenu');
-            }
+                    this.collapseMenu();
+            },
+            ...mapMutations({
+                collapseMenu: 'collapseMenu',
+                setActiveMenuName: 'setActiveMenuName',
+            })
         },
         created() {
             this.$router.add(this.menus);
