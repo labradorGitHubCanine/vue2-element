@@ -64,7 +64,6 @@
         methods: {
             select(index) {
                 this.$router.push({name: index});
-                this.setActiveMenuName(index);
                 if (this.isMobile)
                     this.collapseMenu();
             },
@@ -72,6 +71,11 @@
                 collapseMenu: 'collapseMenu',
                 setActiveMenuName: 'setActiveMenuName',
             })
+        },
+        watch: {
+            $route({name}) {
+                this.setActiveMenuName(name);
+            }
         },
         created() {
             this.$router.add(this.menus);
