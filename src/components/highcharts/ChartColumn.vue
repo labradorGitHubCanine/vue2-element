@@ -3,7 +3,9 @@
     <chart :options="options"></chart>
 </template>
 <script>
-    const {Chart} = window.HighchartsVue
+
+
+    import {Chart} from 'highcharts-vue'
 
     export default {
         props: {

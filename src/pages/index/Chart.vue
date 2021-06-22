@@ -3,11 +3,9 @@
         <el-row>
             <el-col>
                 <chart-line title="今年销售业绩统计"
-                            :data="[
-                                new Array(13).fill(null).map((e, index)=>index+'月'),
-                                new Array(13).fill(null).map((e, index)=>index===0?'金华':(Math.random()*10000).toFixed(0)),
-                                new Array(13).fill(null).map((e, index)=>index===0?'丽水':(Math.random()*10000).toFixed(0)),
-                                new Array(13).fill(null).map((e, index)=>index===0?'舟山':(Math.random()*10000).toFixed(0)),
+                            :categories="new Array(12).fill(null).map((e, index)=>index+1+'月')"
+                            :series="[
+                                {name:'123',data:[3,3,3]}
                             ]"
                             title-x="月份"
                             unit="万"

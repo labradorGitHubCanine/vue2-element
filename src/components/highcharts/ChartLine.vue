@@ -1,6 +1,5 @@
 <template>
-    <!-- 折线图 -->
-    <chart :options="options"></chart>
+    <chart :options="options"></chart><!-- 折线图 -->
 </template>
 <script>
     import {Chart} from 'highcharts-vue'
@@ -9,15 +8,15 @@
         props: {
             title: {type: String}, // 标题
             subtitle: {type: String}, // 副标题
-            data: {type: Array}, // 数据，格式为：[ [null, x轴刻度], [数据1, 1, 2, 3, ...], 数据2, ... ]
+            categories: {type: Array}, // x轴
+            series: {type: Array}, // 数据，每项包含name:名称，data:[]数据
             unit: {type: String}, // 计量单位
             titleX: {type: String}, // x轴标题
             titleY: {type: String}, // y轴标题
         },
-        components: {Chart},
-        data() {
-            return {
-                options: {
+        computed: {
+            options() {
+                return {
                     title: {text: this.title, style: {fontWeight: 'bold'}},
                     subtitle: {text: this.subtitle},
                     tooltip: {
@@ -28,20 +27,22 @@
                         animation: false // 关闭tooltip跟随动画
                     },
                     legend: {
-                        enabled: this.data.length > 2,
+                        enabled: this.series.length > 2,
                         borderWidth: 1,
                     },
                     xAxis: {
                         title: {text: this.titleX, align: 'low'},
                         gridLineWidth: 1,
+                        categories: this.categories
                     },
                     yAxis: {title: {text: this.titleY, align: 'low'}},
-                    data: {columns: this.data},
-                    exporting: {enabled: true},
+                    series: this.series,
+                    exporting: {enabled: false},
                     credits: {enabled: false},
                     plotOptions: {series: {animation: false}},
                 }
             }
-        }
+        },
+        components: {Chart},
     }
 </script>
