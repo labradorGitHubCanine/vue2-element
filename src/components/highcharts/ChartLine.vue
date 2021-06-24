@@ -5,6 +5,7 @@
     import {Chart} from 'highcharts-vue'
 
     export default {
+        components:{Chart},
         props: {
             title: {type: String}, // 标题
             subtitle: {type: String}, // 副标题
@@ -37,12 +38,10 @@
                     },
                     yAxis: {title: {text: this.titleY, align: 'low'}},
                     series: this.series,
-                    exporting: {enabled: false},
                     credits: {enabled: false},
                     plotOptions: {series: {animation: false}},
                 }
             }
         },
-        components: {Chart},
     }
 </script>

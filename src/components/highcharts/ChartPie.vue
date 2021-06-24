@@ -6,19 +6,20 @@
     import {Chart} from 'highcharts-vue'
 
     export default {
+        components: {Chart},
         props: {
             title: {type: String}, // 标题
             subtitle: {type: String}, // 副标题
-            data: {type: Array}, // 数据，格式为：[ [null, 分类...], [名称, 1, 2, 3, ...] ]，只需要2个元素
+            series: {type: Array, default: () => []}, // 数据，格式为：[{name: 名称, y: 值}, ...]
             unit: {type: String}, // 计量单位
         },
-        components: {Chart},
-        data() {
-            return {
-                options: {
+        computed: {
+            options() {
+                return {
                     chart: {type: 'pie'},
                     title: {text: this.title, style: {fontWeight: 'bold'}},
                     subtitle: {text: this.subtitle},
+                    series: [{name: '', data: this.series}],
                     tooltip: {
                         borderWidth: 0,
                         valueSuffix: this.unit,
@@ -32,23 +33,18 @@
                         ].join(''),
                         footerFormat: '</table>',
                     },
-                    data: {columns: this.data},
-                    exporting: {enabled: true},
                     credits: {enabled: false},
                     plotOptions: {
                         series: {animation: false},
                         pie: {
+                            showInLegend: this.series.length > 2,
                             dataLabels: {
                                 format: '<b>{point.name}</b> {point.percentage:.1f}%',
                             },
-                            // showInLegend: true
                         }
-                    },
-                    // legend: {
-                    //     borderWidth: 1,
-                    // },
+                    }
                 }
             }
-        },
+        }
     }
 </script>
