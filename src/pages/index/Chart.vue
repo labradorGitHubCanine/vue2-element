@@ -36,9 +36,9 @@
             <el-col>
                 <chart-pie title="各水果销量占比"
                            :series="[
-                               {name: '苹果', y: 88},
-                               {name: '香蕉', y: 22},
-                               {name: '葡萄', y: 44}
+                               {name: '苹果', y: +(Math.random()*100).toFixed(0)},
+                               {name: '香蕉', y: +(Math.random()*100).toFixed(0)},
+                               {name: '葡萄', y: +(Math.random()*100).toFixed(0)}
                            ]"
                            unit="吨"
                            name="销量"
