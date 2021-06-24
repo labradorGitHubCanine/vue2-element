@@ -12,6 +12,7 @@
             subtitle: {type: String}, // 副标题
             series: {type: Array, default: () => []}, // 数据，格式为：[{name: 名称, y: 值}, ...]
             unit: {type: String}, // 计量单位
+            name: {type: String, default: ''} // 数值描述，例如统计水果销量占比，则传入“销量”
         },
         computed: {
             options() {
@@ -19,7 +20,7 @@
                     chart: {type: 'pie'},
                     title: {text: this.title, style: {fontWeight: 'bold'}},
                     subtitle: {text: this.subtitle},
-                    series: [{name: '', data: this.series}],
+                    series: [{name: this.name, data: this.series}],
                     tooltip: {
                         borderWidth: 0,
                         valueSuffix: this.unit,

@@ -35,8 +35,13 @@
             </el-col>
             <el-col>
                 <chart-pie title="各水果销量占比"
-                           :series="[{name:'苹果',y:88},{name:'香蕉',y:22},{name:'葡萄',y:44}]"
+                           :series="[
+                               {name: '苹果', y: 88},
+                               {name: '香蕉', y: 22},
+                               {name: '葡萄', y: 44}
+                           ]"
                            unit="吨"
+                           name="销量"
                 ></chart-pie>
             </el-col>
         </el-row>
