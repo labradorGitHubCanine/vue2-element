@@ -12,7 +12,6 @@
             subtitle: {type: String}, // 副标题
             series: {type: Array, default: () => []}, // 数据，格式为：[{name: 名称, y: 值}, ...]
             unit: {type: String}, // 计量单位
-            name: {type: String, default: ''} // 数值描述，例如统计水果销量占比，则传入“销量”
         },
         computed: {
             options() {
@@ -20,17 +19,17 @@
                     chart: {type: 'pie'},
                     title: {text: this.title, style: {fontWeight: 'bold'}},
                     subtitle: {text: this.subtitle},
-                    series: [{name: this.name, data: this.series}],
+                    series: [{name: '', data: this.series}],
                     tooltip: {
                         borderWidth: 0,
                         valueSuffix: this.unit,
                         followPointer: false,
                         animation: false,
                         useHTML: true,
-                        headerFormat: '<b>{point.key}</b><table>',
+                        headerFormat: '<span style="color:{point.color}">\u25CF</span><b> {point.key}</b><table>',
                         pointFormat: [
-                            '<tr><td>{series.name}</td><td style="text-align: right"><b>{point.y}</b></td></tr>',
-                            '<tr><td>占比</td><td style="text-align: right"><b>{point.percentage:.1f}%</b></td></tr>',
+                            '<tr><td><b>{point.y}</b></td></tr>',
+                            '<tr><td><b>{point.percentage:.1f}%</b></td></tr>',
                         ].join(''),
                         footerFormat: '</table>',
                     },

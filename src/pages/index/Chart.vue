@@ -21,11 +21,11 @@
                     <el-radio-button label="percent">百分比</el-radio-button>
                 </el-radio-group>
                 <chart-column title="各类水果销售状况"
-                              :categories="['苹果', '橘子', '香蕉']"
+                              :categories="['苹果', '橘子', '香蕉', '梨']"
                               :series="[
-                                  {name: '衢州', data: randomArray(3)},
-                                  {name: '宁波', data: randomArray(3)},
-                                  {name: '丽水', data: randomArray(3)},
+                                  {name: '衢州', data: randomArray(4)},
+                                  {name: '宁波', data: randomArray(4)},
+                                  {name: '丽水', data: randomArray(4)},
                               ]"
                               unit="吨"
                               title-y="销售量"

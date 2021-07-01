@@ -34,8 +34,13 @@
                         valueSuffix: this.unit,
                         animation: false,
                         crosshairs: true,
-                        headerFormat: '<b>{point.key}</b><br/>',
-                        useHTML: true
+                        useHTML: true,
+                        headerFormat: '<b>{point.key}</b><table>',
+                        pointFormat: [
+                            '<tr><td><span style="color:{point.color}">\u25CF</span> {series.name}：<b>{point.y}</b></td></tr>',
+                            ['normal', 'percent'].includes(this.stacking) ? '<tr><td><b>{point.percentage:.1f}%</b></td></tr>' : '',
+                        ].join(''),
+                        footerFormat: '</table>',
                     },
                     legend: {
                         enabled: this.series.length > 2,
