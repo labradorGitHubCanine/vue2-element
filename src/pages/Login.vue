@@ -11,7 +11,11 @@
                         <el-input v-model="form.username" prefix-icon="el-icon-user" placeholder="用户名" clearable></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-input v-model="form.password" prefix-icon="el-icon-key" placeholder="密码" clearable type="password"></el-input>
+                        <el-input v-model="form.password" prefix-icon="el-icon-key" placeholder="密码" clearable type="password"
+                                  readonly
+                                  @focus="e => e.target.readOnly = false"
+                                  @blur="e => e.target.readOnly = true"
+                        ></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-checkbox>记住密码</el-checkbox>
@@ -24,32 +28,32 @@
     </el-row>
 </template>
 <script>
-    import StorageUtil from "@/plugins/util/storage-util"
-    import Lottie from "@/components/Lottie"
+import StorageUtil from "@/plugins/util/storage-util"
+import Lottie from "@/components/Lottie"
 
-    export default {
-        components: {Lottie},
-        created() {
-            StorageUtil.clear();
-        },
-        data() {
-            return {
-                form: {},
-                path: require("@/assets/json/working.json"),
-            }
-        },
-        methods: {
-            login() {
-                this.$router.push({name: 'main'});
-            }
+export default {
+    components: {Lottie},
+    created() {
+        StorageUtil.clear();
+    },
+    data() {
+        return {
+            form: {},
+            path: require("@/assets/json/working.json"),
+        }
+    },
+    methods: {
+        login() {
+            this.$router.push({name: 'main'});
         }
     }
+}
 </script>
 <style scoped>
-    @media screen and (max-width: 991px) {
-        .el-card {
-            border: none;
-            box-shadow: none;
-        }
+@media screen and (max-width: 991px) {
+    .el-card {
+        border: none;
+        box-shadow: none;
     }
+}
 </style>
