@@ -13,45 +13,45 @@
     ></el-pagination>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                items: [
-                    {className: 'hidden-sm-and-down', pagerCount: 7, layout: 'total, sizes, ->, jumper, prev, pager, next'},
-                    {className: 'hidden-md-and-up', pagerCount: 5, layout: 'prev, pager, next'},
-                ]
-            }
+export default {
+    data() {
+        return {
+            items: [
+                {className: 'hidden-sm-and-down', pagerCount: 7, layout: 'total, sizes, ->, jumper, prev, pager, next'},
+                {className: 'hidden-md-and-up', pagerCount: 5, layout: 'prev, pager, next'},
+            ]
+        }
+    },
+    computed: {
+        isMobile() {
+            return this.$store.state.isMobile
+        }
+    },
+    props: {
+        data: {
+            type: Object,
+            required: true
         },
-        computed: {
-            isMobile() {
-                return this.$store.state.isMobile
-            }
+        total: {
+            type: Number,
+            default: 0
         },
-        props: {
-            data: {
-                type: Object,
-                required: true
-            },
-            total: {
-                type: Number,
-                default: 0
-            },
-            small: { // 小型尺寸
-                type: Boolean,
-                default: false
-            }
+        small: { // 小型尺寸
+            type: Boolean,
+            default: false
+        }
+    },
+    model: {
+        prop: 'data',
+        event: 'change'
+    },
+    methods: {
+        currentChange(e) {
+            this.$emit('change', {...this.data, pageNum: e});
         },
-        model: {
-            prop: 'data',
-            event: 'a'
-        },
-        methods: {
-            currentChange(e) {
-                this.$emit('a', {...this.data, pageNum: e});
-            },
-            sizeChange(e) {
-                this.$emit('a', {...this.data, pageSize: e});
-            }
+        sizeChange(e) {
+            this.$emit('change', {...this.data, pageSize: e});
         }
     }
+}
 </script>
